@@ -1,0 +1,6 @@
+DBHost: "localhost"
+DBPort: "5432"
+DBUser: "username"
+DBPassword: "password"
+DBName: "library"
+AppPort: "8080"

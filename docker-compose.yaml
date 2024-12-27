@@ -1,0 +1,32 @@
+version: '3.7'
+
+name: library-project
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: library
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    environment:
+      DBHost: db
+      DBPort: 5432
+      DBUser: username
+      DBPassword: password
+      DBName: library
+      AppPort: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
